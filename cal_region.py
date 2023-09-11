@@ -45,10 +45,11 @@ def distr_region(n: int, origin: Point, rotate: Deg) -> Callable[[Point], int]:
 
     def cal_region(p: Point) -> int:
         ang = RegionInfo.rel(p, origin).deg - rotate
-        ang = -ang # origin of img is in left-top
-        ang = norm_angle(ang, AngleType.Deg)
-        res = reg_div(ang)
-        return res
+        return reg_dev(
+            norm_angle(
+              -ang # origin of img is in left-top
+              , AngleType.Deg)
+        )
 
     return cal_region
 
